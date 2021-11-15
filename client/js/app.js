@@ -1,3 +1,13 @@
+function getAllFoods(){
+    
+    document.querySelector('ul').textContent = ''
+
+    fetch('http://localhost:3000/foods')
+    .then(r=>r.json())
+    .then(appendFoods)
+    .catch(console.warn)
+}
+
 function submitFood(e){
     e.preventDefault();
     
@@ -22,6 +32,10 @@ function submitFood(e){
         .then(appendFood)
         .then(emptyForm)
     
+}
+
+function appendFoods(foods){
+    foods.forEach(appendFood);
 }
 
 //adds foods to a list below form
